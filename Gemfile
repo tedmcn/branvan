@@ -45,4 +45,5 @@ group :development do
   gem 'spring'
 end
 
+#For sql databas
 gem 'mysql2'
