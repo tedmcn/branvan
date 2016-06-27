@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  xcoord: 1
+  ycoord: 1
+  name: MyString
+
+two:
+  xcoord: 1
+  ycoord: 1
+  name: MyString

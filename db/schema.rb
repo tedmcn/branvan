@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614182948) do
+ActiveRecord::Schema.define(version: 20160627160159) do
+
+  create_table "locations", force: :cascade do |t|
+    t.integer  "xcoord",     limit: 4
+    t.integer  "ycoord",     limit: 4
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "reservations", force: :cascade do |t|
     t.datetime "created_at", null: false
