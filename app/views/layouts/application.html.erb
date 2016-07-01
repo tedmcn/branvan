@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Workspace</title>
+    <title>BranVan</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <%= yield %>
     
+      
+      
+        
     <!-- Material Design Lite -->
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
@@ -45,6 +47,8 @@
     
   <main class="mdl-layout__content">
     <div class="page-content">
+      
+    <%= yield %>
     <!-- Your content goes here -->
   
       <!-- Full Width Section 
