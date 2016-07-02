@@ -1,5 +1,39 @@
 <h1>New Location</h1>
 
+
+
+<div id="map" class="map"></div>
+<script>
+  var map;
+  var markers = [];
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 42.3765, lng: -71.2356},
+      zoom: 12
+    });
+    
+    
+    
+    map.addListener('click', function(e){
+        
+        for (var i=0;i< markers.length; i++){
+            markers[i].setMap(null);
+        }
+        
+        var marker= new google.maps.Marker({
+            position:e.latLng,
+            map:map
+        });
+        markers.push(marker);
+    });
+    
+  }
+  
+  
+  
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmZ0UjQy-J4ELU51wczIAqv9nlywKb4mA&callback=initMap" async defer></script>
+
 <%= render 'form' %>
 
 <%= link_to 'Back', locations_path %>

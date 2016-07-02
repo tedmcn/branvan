@@ -1,31 +1,40 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Locations</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Xcoord</th>
-      <th>Ycoord</th>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="mdl-grid">
     <% @locations.each do |location| %>
-      <tr>
-        <td><%= location.xcoord %></td>
-        <td><%= location.ycoord %></td>
-        <td><%= location.name %></td>
-        <td><%= link_to 'Show', location %></td>
-        <td><%= link_to 'Edit', edit_location_path(location) %></td>
-        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-cell--3-col-phone mdl-card mdl-shadow--3dp">
+        <div class="mdl-card__media">
+          <p>Map location</p>
+        </div>
+        <div class="mdl-card__title">
+           <h4 class="mdl-card__title-text"><%= location.name %></h4>
+        </div>
+        <div class="mdl-card__supporting-text">
+          <span class="mdl-typography--font-light mdl-typography--subhead">
+            text
+          </span>
+        </div>
+        <div class="mdl-card__actions">
+          <!-- Icon button link-->
+          <a href=""class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">link</i>
+          </a>
+        </div>
+      </div>
+      <% end %>
+  </div>
+
 
 <br>
 
-<%= link_to 'New Location', new_location_path %>
+<!--<%= button_to 'New Location', new_location_path%>-->
+<!--<%= button_to('+', {action:"new"}, class:"mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored") %>-->
+
+
+<!-- Colored FAB button with ripple -->
+<a href="locations/new">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored", id="primary-action-button">
+    <i class="material-icons">add</i>
+  </button>
+</a>
