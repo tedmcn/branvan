@@ -14,16 +14,20 @@
 ActiveRecord::Schema.define(version: 20160627160159) do
 
   create_table "locations", force: :cascade do |t|
-    t.integer  "xcoord",     limit: 4
-    t.integer  "ycoord",     limit: 4
+    t.string   "xcoord",     limit: 255
+    t.string   "ycoord",     limit: 255
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "reservation_for"
+    t.integer  "dropoff_id",      limit: 4
+    t.integer  "pickup_id",       limit: 4
+    t.integer  "user_id",         limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|
