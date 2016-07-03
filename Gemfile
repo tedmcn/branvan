@@ -52,3 +52,5 @@ gem 'mysql2'
 gem "devise_ldap_authenticatable", :git => "git://github.com/cschiewek/devise_ldap_authenticatable.git"
 
 gem 'devise'
+
+gem 'rails-ajax'

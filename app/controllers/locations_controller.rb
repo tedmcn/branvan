@@ -5,6 +5,8 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     @locations = Location.all
+    @location = Location.new
+
   end
 
   # GET /locations/1
@@ -14,7 +16,6 @@ class LocationsController < ApplicationController
 
   # GET /locations/new
   def new
-    @location = Location.new
   end
 
   # GET /locations/1/edit
@@ -25,16 +26,13 @@ class LocationsController < ApplicationController
   # POST /locations.json
   def create
     @location = Location.new(location_params)
-
+    @location.save
+    
+    @locations = Location.all
     respond_to do |format|
-      if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
-        format.json { render :show, status: :created, location: @location }
-      else
-        format.html { render :new }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
-      end
+      format.js { render layout: false, content_type: 'text/javascript' }
     end
+    
   end
 
   # PATCH/PUT /locations/1

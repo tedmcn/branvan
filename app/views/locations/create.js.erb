@@ -1,0 +1,6 @@
+<% if @location.valid? %>
+    alert("Saved");
+    ('#location_list').html('<%= escape_javascript( render :partial => "show" ) %>');
+<% else %>
+    alert('Could not save');
+<% end %>

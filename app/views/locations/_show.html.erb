@@ -1,0 +1,26 @@
+  <div class="mdl-grid">
+    <% @locations.each do |location| %>
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-cell--3-col-phone mdl-card mdl-shadow--3dp">
+        <div class="">
+ 
+          <% url1="https://maps.googleapis.com/maps/api/staticmap?center="%>
+          <% url2="&zoom=19&size=600x400&key=" %>
+          <% mapurl = url1+location.xcoord+","+location.ycoord+url2 %>
+          <img class="map-small" src="<%=mapurl%>">
+        </div>
+        <div class="mdl-card__title">
+           <h4 class="mdl-card__title-text"><%= location.name %></h4>
+        </div>
+        <div class="mdl-card__actions action-button">
+          <!-- Icon button link-->
+          <a href=""class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">edit</i>
+          </a>
+          <a href=""class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">delete</i>
+          </a>
+          
+        </div>
+      </div>
+      <% end %>
+  </div>
