@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :locations
+  
+  get '/locations/:id/delete', to: "locations#destroy", as: "delete"
+  
   devise_for :users
   resources :homes
   resources :reservations

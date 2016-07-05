@@ -20,3 +20,8 @@
 //= require jquery.history
 //= require jquery.rails-ajax
 //= require RailsAjax-Config
+function openModal(){
+    document.getElementById('modal_custom').style.visibility="visible";
+    document.activeElement.blur();
+    document.getElementById('modal_custom').focus();
+}

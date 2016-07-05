@@ -16,6 +16,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/new
   def new
+    @location = Location.new
   end
 
   # GET /locations/1/edit
@@ -54,6 +55,7 @@ class LocationsController < ApplicationController
   def destroy
     @location.destroy
     respond_to do |format|
+      format.js { render layout: false, content_type: 'text/javascript' }
       format.html { redirect_to locations_url, notice: 'Location was successfully destroyed.' }
       format.json { head :no_content }
     end

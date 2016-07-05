@@ -38,7 +38,15 @@
     clear: both
 }
 
+#modal_custom{
+    visibility: hidden;
+    left:25%;
+    position: fixed;
+    top: 40px;
+    z-index:100;
+    width: 100%;
 
+}
 /*
     Img Cards
 */
@@ -57,3 +65,5 @@
   font-size: 14px;
   font-weight: 500;
 }
+
+
