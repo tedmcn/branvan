@@ -19,6 +19,10 @@
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-labe">
           <%= f.label :Search , class:"mdl-textfield__label"  %><br>
+          <input id="search" class="mdl-textfield__input">
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-labe">
+          <%= f.label :Name , class:"mdl-textfield__label"  %><br>
           <%= f.text_field :name, class:"mdl-textfield__input" %>
         </div>
         <div class="actions">
@@ -35,6 +39,7 @@
   var xcoord = document.getElementById('location_xcoord');
   var ycoord = document.getElementById('location_ycoord');
   var name =document.getElementById("location_name");
+  var search = document.getElementById("search");
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 42.3765, lng: -71.2356},
@@ -43,7 +48,7 @@
     
     geocoder = new google.maps.Geocoder();
   
-    document.getElementById("location_name").addEventListener("keydown", codeAddress, false);
+    document.getElementById("search").addEventListener("keydown", codeAddress, false);
     
     map.addListener('click', function(e){
         
@@ -77,39 +82,32 @@
             // markers.push(marker);
             google.maps.event.addListener(marker, "dragend", function() {
               document.getElementById('location_name').value= address;
+              document.getElementById('search').value= address;
             });
             document.getElementById('location_name').value= address;
+            document.getElementById('search').value= address;
           }
         });
     });
     
   }
   
-  function keyDownTextField (e) {
-    alert(e.keyCode);
-  }
   
   function codeAddress() {
         var address = document.getElementById('location_name').value;
-        
+        var search = document.getElementById("search");
         //Set all markers to null
         for (var i=0;i< markers.length; i++){
             markers[i].setMap(null);
         }
         
-        geocoder.geocode( { 'address': address}, function(results, status) {
+        geocoder.geocode( { 'address': search.value}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             map.setCenter(results[0].geometry.location);
             
-            marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location,
-                draggable: true
-            });
             
             var address = results[0].address_components[0].long_name + " " + results[0].address_components[1].long_name + " " + results[0].address_components[2].long_name + " " + results[0].address_components[3].long_name;
             
-            markers.push(marker);
             google.maps.event.addListener(marker, "dragend", function() {
               document.getElementById('location_xcoord').value = marker.getPosition().lat();
               document.getElementById('location_ycoord').value = marker.getPosition().lng();

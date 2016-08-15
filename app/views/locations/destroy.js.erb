@@ -1,2 +1,1 @@
-alert('<%=escape_javascript @location.name %>');
-$('#location_list').html('<%= escape_javascript( render :partial => "show" ) %>');
+document.getElementById('location_<%=@location.id%>').hidden=true;

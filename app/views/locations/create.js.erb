@@ -1,7 +1,13 @@
 <% if @location.valid? %>
-    alert("Saved");
+    console.log("Saved");
     $('#location_list').html('<%= escape_javascript( render :partial => "show" ) %>');
 <% else %>
     alert('Could not save');
 <% end %>
 document.getElementById('modal_custom').style.visibility="hidden";
+
+
+document.getElementById('search').value="";
+document.getElementById('location_name').value="";
+document.getElementById('location_xcoord').value="";
+document.getElementById('location_ycoord').value="";

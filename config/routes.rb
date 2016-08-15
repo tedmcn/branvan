@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :routes
   resources :locations
   
-  get '/locations/:id/delete', to: "locations#destroy", as: "delete"
+  get '/locations/:id/delete', to: "locations#destroy", as: "location_delete"
+  get '/locations/:id/edit', to:"locations#update", as: "location_edit"
   
   devise_for :users
   resources :homes

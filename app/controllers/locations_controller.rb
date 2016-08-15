@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-
+  respond_to :html, :js
+  
   # GET /locations
   # GET /locations.json
   def index
@@ -21,6 +22,10 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
+    
+    respond_to do |format|
+      format.js { render layout: false, content_type: 'text/javascript' }
+    end
   end
 
   # POST /locations
@@ -54,11 +59,6 @@ class LocationsController < ApplicationController
   # DELETE /locations/1.json
   def destroy
     @location.destroy
-    respond_to do |format|
-      format.js { render layout: false, content_type: 'text/javascript' }
-      format.html { redirect_to locations_url, notice: 'Location was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private

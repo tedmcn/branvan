@@ -7,7 +7,7 @@ RailsAjax.configure do
   # * Remove the tmp/cache directory
   # * Precompile your assets in production mode
   # * Restart your server
-  enable true
+  enable false
 
   # Set the default main container that will receive the result of Ajax requests.
   # This container will get what is rendered by default when render is called.

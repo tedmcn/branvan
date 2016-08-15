@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+
+<!--<table>-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th colspan="3"></th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+
+<!--  <tbody>-->
+<!--    <% @routes.each do |route| %>-->
+<!--      <tr>-->
+<!--        <td><%= link_to 'Show', route %></td>-->
+<!--        <td><%= link_to 'Edit', edit_route_path(route) %></td>-->
+<!--        <td><%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--      </tr>-->
+<!--    <% end %>-->
+<!--  </tbody>-->
+<!--</table>-->
+
+<%= form_for @route, :remote =>true do |f| %>
+
+
+<div  class="mdl-textfield mdl-js-textfield mdl-textfield--floating-lab">
+  <%= f.label :Route_Name, class:"mdl-textfield__label" %><br>
+  <%= f.text_field :name, class:"mdl-textfield__input" %>
+</div>
+
+<div class="mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">
+    <label class="mdl-textfield__label" for="sample2">Route duration in minutes</label>
+    <span class="mdl-textfield__error">Input is not a number!</span>
+</div>
+<div class="mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">
+    <label class="mdl-textfield__label" for="sample2">Bus ID</label>
+    <span class="mdl-textfield__error">Input is not a number!</span>
+</div>
+<table id="route_list" class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+ <thread>
+   <tr>
+     <th class="mdl-data-table__cell--non-numeric">Location</th>
+     <th>Stop Number</th>
+     <th>Time to Location</th>
+   </tr>
+ </thread>
+</table>
+
+<% end%>
+
+<ul id="location_list" class="demo-list-control mdl-list">
+  <% @locations.each do |location| %>
+    <li class="mdl-list__item">
+      <span class="mdl-list__item-primary-content">
+        <i class="material-icons mdl-list__itemavatar">room</i>
+        <%=location.name%>
+      </span>
+      <span class="mdl-list__item-seconary-action">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-<%=location.id%>">
+          <input onclick="addToRoute(this)" type="checkbox"  data-id='<%=location.id%>' data-name='<%=location.name%>' id="list-checkbox-<%=location.id%>" class="mdl-checkbox__input" unchecked />
+        </label>
+      </span>
+    </li>
+  <% end %>
+</ul>
+
+<br>
+
+<%= link_to 'New Route', new_route_path %>
+<a onclick="openModal()">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored", id="primary-action-button">
+    <i class="material-icons">add</i>
+  </button>
+</a>
